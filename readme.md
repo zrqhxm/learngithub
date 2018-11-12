@@ -10,3 +10,31 @@
 将github远程仓库更新的资源拉取到本地
   git pull origin master  -- master是主节点或分支节点的
 
+
+
+命令：
+
+```
+ssh-keygen -t rsa -C "xxxx@xx.com"  --生成密钥公钥  将id_rsa.pub内容复制到git网页中
+
+ssh -T git@github.com    --测试公钥配置是否成功，和git服务器连接
+
+git add "文件名"
+
+git add .
+
+git commit -m "提交说明"
+
+git push origin master   --上传到远端git服务器
+
+git clone https://xxxxxx   --克隆项目到本地
+
+git pull origin master  -- master是主节点或分支节点的
+
+```
+
+
+
+
+
+
