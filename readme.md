@@ -6,3 +6,7 @@
   3.git remote add origin git@github.com:zrqhxm/learngithub.git
   4.git push origin master
 通过以上四步后（ssh-keygen -t rsa  -C  "your email@.com"已完成），在这里可以看到这个readme.md文件
+
+将github远程仓库更新的资源拉取到本地
+  git pull origin master  -- master是主节点或分支节点的
+
