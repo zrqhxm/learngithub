@@ -1,0 +1,5 @@
+1.hadoop环境变量配置出错
+解决：D:\hadoop-2.7.2\etc\hadoop\hadoop-env.cmd中配置java环境变量
+          set JAVA_HOME=C:\PROGRA~1\Java\jdk1.8.0_181
+2.Eclipse报错：org.apache.hadoop.io.nativeio.NativeIO$Windows.access0(Ljava/lang/String;I)Z
+解决：将本地对应版本的hadoop/bin中的hadoop.dll放到C:\Windows\System32下
