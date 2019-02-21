@@ -1,0 +1,48 @@
+du -h --max-depth=1, 查看该目录下文件的大小
+du -sh * ,查看该目录下文件的大小
+du -sh * | sort -rh,查看该目录下文件大小并从大到小排序
+find -name *tomcat*  先cd到需要查找的目录后查找tomcat
+df -hl    查看文件大小
+netstat -ano   windows查看所有端口
+telnet 59.41.158.69 9090  查看端口是否开放（windows cmd）
+netstat -tunlp |grep 9090(端口号)
+
+CentOS6:
+service iptables stop 关闭防火墙
+CentOS 7 开放防火墙端口 命令
+        最近公司新的server要求用CentOS7， 发现以前CentOS 6 系列中的 iptables 相关命令不能用了，查了下，发现Centos 7使用firewalld代替了原来的iptables。
+使用方法如下：
+>>> 关闭防火墙
+
+systemctl stop firewalld.service             #停止firewall
+systemctl disable firewalld.service        #禁止firewall开机启动
+
+>>> 开启端口
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+ 命令含义：
+--zone #作用域
+--add-port=80/tcp #添加端口，格式为：端口/通讯协议
+--permanent #永久生效，没有此参数重启后失效
+
+
+                                            
+iptables -L -n                                 ##查看规则，这个命令是和iptables的相同的
+man firewall-cmd                               ##查看帮助
+更多命令，使用  firewall-cmd --help 查看帮助文件
+
+>>>  CentOS 7.0默认使用的是firewall作为防火墙，使用iptables必须重新设置一下
+1、直接关闭防火墙
+systemctl stop firewalld.service           #停止firewall
+systemctl disable firewalld.service     #禁止firewall开机启动
+
+2、设置 iptables service
+yum -y install iptables-services
+如果要修改防火墙配置，如增加防火墙端口3306
+vi /etc/sysconfig/iptables 
+增加规则
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+
+保存退出后
+systemctl restart iptables.service #重启防火墙使配置生效
+systemctl enable iptables.service #设置防火墙开机启动
+最后重启系统使设置生效即可。

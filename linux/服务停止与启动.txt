@@ -1,0 +1,39 @@
+[[oozie]]
+cd /export/servers/oozie-4.1.0-cdh5.14.0
+bin/oozied.sh stop
+
+
+[[impala]]
+service impala-catalog stop
+service impala-state-store stop
+service impala-server stop
+
+[[hue]]
+cd /export/servers/hue-3.9.0-cdh5.14.0/
+build/env/bin/supervisor
+
+[[hive]]
+kill -9 {RunJar进程号}
+
+[[mysql]]
+service mysqld stop
+service mysqld start
+
+[[zookeeper]]
+bin/zkServer.sh start
+bin/zkServer.sh stop
+
+[[hadoop]]
+#配环境变量
+stop-dfs.sh
+stop-yarn.sh
+start-dfs.sh
+start-yarn.sh
+
+mr-jobhistory-daemon.sh stop historyserver
+mr-jobhistory-daemon.sh start historyserver
+
+[[kafka]]
+cd /export/servers/kafka
+bin/kafka-server-start.sh /export/servers/kafka/config/server.properties >/dev/null 2>&1 &
+
